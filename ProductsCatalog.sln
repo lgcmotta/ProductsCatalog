@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29209.62
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D6AF9B8C-E81E-4A0A-ACD3-3EBC4490FDF0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apps", "Apps", "{3DA0855C-4AFC-4960-96FD-105845831769}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{36FAAFBA-8551-4E56-9646-3768B406309A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductsCatalog.WebAPI", "src\ProductsCatalog.WebAPI\ProductsCatalog.WebAPI.csproj", "{D1B5F621-EFA7-4BAE-86BA-0D48C49DF2DE}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1B3B7015-1D87-4D61-8228-4C9424CBE758}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1B5F621-EFA7-4BAE-86BA-0D48C49DF2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B5F621-EFA7-4BAE-86BA-0D48C49DF2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B5F621-EFA7-4BAE-86BA-0D48C49DF2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B5F621-EFA7-4BAE-86BA-0D48C49DF2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B3B7015-1D87-4D61-8228-4C9424CBE758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B3B7015-1D87-4D61-8228-4C9424CBE758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B3B7015-1D87-4D61-8228-4C9424CBE758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B3B7015-1D87-4D61-8228-4C9424CBE758}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DA0855C-4AFC-4960-96FD-105845831769} = {D6AF9B8C-E81E-4A0A-ACD3-3EBC4490FDF0}
+		{36FAAFBA-8551-4E56-9646-3768B406309A} = {D6AF9B8C-E81E-4A0A-ACD3-3EBC4490FDF0}
+		{D1B5F621-EFA7-4BAE-86BA-0D48C49DF2DE} = {36FAAFBA-8551-4E56-9646-3768B406309A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00B4B5BB-6732-4702-8C7C-67C04CA667C5}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-latest
+    environment:
+      - SA_PASSWORD=aBcD*1!234
+      - ACCEPT_EULA=Y
+    ports:
+      - "1433:1433"
+
+  productscatalog.webapi:
+    image: ${DOCKER_REGISTRY-}productscatalogwebapi
+    build:
+      context: .
+      dockerfile: src/ProductsCatalog.WebAPI/Dockerfile
+    depends_on:
+      - sqlserver
