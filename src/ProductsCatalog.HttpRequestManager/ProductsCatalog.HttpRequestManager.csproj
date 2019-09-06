@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductsCatalog.ConversionExtensions.Json\ProductsCatalog.ConversionExtensions.Json.csproj" />
+    <ProjectReference Include="..\ProductsCatalog.ConversionExtensions.Xml\ProductsCatalog.ConversionExtensions.Xml.csproj" />
+  </ItemGroup>
+
+</Project>
