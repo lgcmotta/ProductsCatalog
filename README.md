@@ -7,4 +7,5 @@ From there client applications can convert the results to any file extension.
 
 ## Environment
 * .NET Core 3 (preview 6)
+* .NET Standard
 * Docker for Desktop
