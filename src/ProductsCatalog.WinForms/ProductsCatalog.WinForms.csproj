@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{40A2A4A7-CB72-4126-8DF5-1816637FDC11}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProductsCatalog.WinForms</RootNamespace>
+    <AssemblyName>ProductsCatalog.WinForms</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Containers\CrudContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Containers\CrudContainer.Designer.cs">
+      <DependentUpon>CrudContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Containers\ViewerContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Containers\ViewerContainer.Designer.cs">
+      <DependentUpon>ViewerContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\ConfigurationDto.cs" />
+    <Compile Include="DTO\ProductDto.cs" />
+    <Compile Include="EventArgs\MainMenuEventArgs.cs" />
+    <Compile Include="ProductsCatalogForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductsCatalogForm.Designer.cs">
+      <DependentUpon>ProductsCatalogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\ConfigurationCrud.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ConfigurationCrud.Designer.cs">
+      <DependentUpon>ConfigurationCrud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\CrudButtonBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\CrudButtonBar.Designer.cs">
+      <DependentUpon>CrudButtonBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ExportButtonBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ExportButtonBar.Designer.cs">
+      <DependentUpon>ExportButtonBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\MainMenuBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\MainMenuBar.Designer.cs">
+      <DependentUpon>MainMenuBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ProductCrud.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ProductCrud.Designer.cs">
+      <DependentUpon>ProductCrud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ProductsGridViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ProductsGridViewer.Designer.cs">
+      <DependentUpon>ProductsGridViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\ViewerButtonBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\ViewerButtonBar.Designer.cs">
+      <DependentUpon>ViewerButtonBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\ProductsViewModel.cs" />
+    <EmbeddedResource Include="Containers\CrudContainer.resx">
+      <DependentUpon>CrudContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Containers\ViewerContainer.resx">
+      <DependentUpon>ViewerContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsCatalogForm.resx">
+      <DependentUpon>ProductsCatalogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="UserControl\ConfigurationCrud.resx">
+      <DependentUpon>ConfigurationCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\CrudButtonBar.resx">
+      <DependentUpon>CrudButtonBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ExportButtonBar.resx">
+      <DependentUpon>ExportButtonBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\MainMenuBar.resx">
+      <DependentUpon>MainMenuBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ProductCrud.resx">
+      <DependentUpon>ProductCrud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ProductsGridViewer.resx">
+      <DependentUpon>ProductsGridViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\ViewerButtonBar.resx">
+      <DependentUpon>ViewerButtonBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProductsCatalog.ConversionExtensions.Json\ProductsCatalog.ConversionExtensions.Json.csproj">
+      <Project>{fea3c7ec-d4d6-4ff8-ba5e-824b412c34d6}</Project>
+      <Name>ProductsCatalog.ConversionExtensions.Json</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductsCatalog.ConversionExtensions.Xml\ProductsCatalog.ConversionExtensions.Xml.csproj">
+      <Project>{56bbce71-1064-4a75-9d54-a757de273709}</Project>
+      <Name>ProductsCatalog.ConversionExtensions.Xml</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProductsCatalog.HttpRequestManager\ProductsCatalog.HttpRequestManager.csproj">
+      <Project>{8537db4d-8a64-47f3-ac81-5c58ffe90746}</Project>
+      <Name>ProductsCatalog.HttpRequestManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

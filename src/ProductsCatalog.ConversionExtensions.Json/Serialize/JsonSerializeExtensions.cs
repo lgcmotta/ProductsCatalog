@@ -6,7 +6,7 @@ namespace ProductsCatalog.ConversionExtensions.Json.Serialize
 {
     public static class JsonSerializeExtensions
     {
-        public static string ToJsonString<T>(this T jsonObject) where T : class =>
+        public static string ToJsonString<T>(this T jsonObject) where T : class, new() =>
             JsonConvert.SerializeObject(jsonObject
                 , new JsonSerializerSettings
                 {
