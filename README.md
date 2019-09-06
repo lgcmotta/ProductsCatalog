@@ -8,4 +8,5 @@ From there client applications can convert the results to any file extension.
 ## Environment
 * .NET Core 3 (preview 6)
 * .NET Standard
+* .NET Framework 4.7.2
 * Docker for Desktop
