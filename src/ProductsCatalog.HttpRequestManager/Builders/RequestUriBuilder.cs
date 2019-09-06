@@ -4,40 +4,45 @@ using ProductsCatalog.HttpRequestManager.Extensions;
 
 namespace ProductsCatalog.HttpRequestManager.Builders
 {
-    public class RequestUriBuilder
+    public class RequestUriBuilder : IDisposable
     {
-        private string _body;
+        public string Body { get; set; }
 
         public RequestUriBuilder(string body)
         {
-            _body = body;
+            Body = body;
+        }
+
+        public RequestUriBuilder()
+        {
+            Body = string.Empty;
         }
 
         public RequestUriBuilder BuildBaseUrl(RequestProtocol protocol)
         {
-            if (string.IsNullOrEmpty(_body) || string.IsNullOrWhiteSpace(_body))
-                throw new ArgumentNullException(nameof(_body));
+            if (string.IsNullOrEmpty(Body) || string.IsNullOrWhiteSpace(Body))
+                throw new ArgumentNullException(nameof(Body));
 
-            _body = _body.AppendProtocol(protocol);
+            Body = Body.AppendProtocol(protocol);
 
             return this;
         }
 
         public RequestUriBuilder AppendPath(string path, bool lastPath = false)
         {
-            _body = _body.AppendPath(path, lastPath);
+            Body = Body.AppendPath(path, lastPath);
 
             return this;
         }
 
         public string Build()
         {
-            return _body;
+            return Body;
         }
 
         public void Dispose()
         {
-            _body = null;
+            Body = null;
             GC.Collect();
         }
     }

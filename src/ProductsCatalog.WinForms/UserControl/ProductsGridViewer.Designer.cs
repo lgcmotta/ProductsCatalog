@@ -53,6 +53,7 @@
             this.gridViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridViewer.GridColor = System.Drawing.Color.White;
             this.gridViewer.Location = new System.Drawing.Point(0, 0);
+            this.gridViewer.MultiSelect = false;
             this.gridViewer.Name = "gridViewer";
             this.gridViewer.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -66,6 +67,7 @@
             this.gridViewer.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.gridViewer.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Light", 10F);
             this.gridViewer.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.gridViewer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridViewer.Size = new System.Drawing.Size(555, 353);
             this.gridViewer.TabIndex = 0;
             // 

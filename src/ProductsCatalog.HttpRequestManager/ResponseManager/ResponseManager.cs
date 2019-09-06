@@ -1,7 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using ProductsCatalog.ConversionExtensions.Json.Deserialize;
 using ProductsCatalog.ConversionExtensions.Xml.Deserialize;
@@ -11,14 +14,23 @@ namespace ProductsCatalog.HttpRequestManager.ResponseManager
 {
     public class ResponseManager
     {
-        public static async Task<T> BuildWebJsonObject<T>(string url, RestMethods method, DecompressionMethods decompressionMethods, Encoding encoding) where T : class, new()
+        public static async Task<T> GetRequestJsonObject<T>(string url, DecompressionMethods decompressionMethods, Encoding encoding) where T : class, new()
         {
-            return await (await MakeRequest(url, method, decompressionMethods, encoding)).DeserializeJsonStringAsync<T>();
+            return await (await MakeRequest(url, RestMethods.Get, decompressionMethods, encoding)).DeserializeJsonStringAsync<T>();
         }
 
-        public static async Task<T> BuildWebXmlObject<T>(string url, RestMethods method, DecompressionMethods decompressionMethods, Encoding encoding) where T : class, new()
+        public static async Task<T> GetResquestXmlObject<T>(string url,  DecompressionMethods decompressionMethods, Encoding encoding) where T : class, new()
         {
-            return await (await MakeRequest(url, method, decompressionMethods, encoding)).DeserializeXmlStringAsync<T>();
+            return await (await MakeRequest(url, RestMethods.Get, decompressionMethods, encoding)).DeserializeXmlStringAsync<T>();
+        }
+
+        public static async Task<HttpResponseMessage> PostObjectToWebApi(string url, string content, Encoding encoding, string mediaType = "application/json")
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.PostAsync(url, new StringContent(content,encoding, mediaType));
+                return response;
+            }
         }
 
         private static async Task<string> MakeRequest(string url, RestMethods method, DecompressionMethods methods, Encoding encoding)
@@ -33,6 +45,26 @@ namespace ProductsCatalog.HttpRequestManager.ResponseManager
                 {
                     return await streamReader.ReadToEndAsync();
                 }
+            }
+        }
+
+        public static async Task<HttpResponseMessage> DeleteObjectFromWebApi(string url)
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.DeleteAsync(url, CancellationToken.None));
+                return response;
+            }
+        }
+
+        public static async Task<HttpResponseMessage> PutObjectToWebApi<T>(string url, T content, Encoding encoding, string mediaType)
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.PutAsJsonAsync<T>(url, content);
+
+                return response;
+
             }
         }
     }

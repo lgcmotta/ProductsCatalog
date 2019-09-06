@@ -11,33 +11,35 @@ using System.Windows.Forms;
 using ProductsCatalog.HttpRequestManager.Enumerations;
 using ProductsCatalog.HttpRequestManager.ResponseManager;
 using ProductsCatalog.WinForms.DTO;
+using ProductsCatalog.WinForms.EventArgs;
 
 namespace ProductsCatalog.WinForms.UserControl
 {
     public partial class ProductsGridViewer : System.Windows.Forms.UserControl
     {
+        public delegate void ProductGridSelectedEventHandler(object sender, ProductGridEventArgs args);
+
+        public event ProductGridSelectedEventHandler GridViewerOnRowSelected;
+
         public ProductsGridViewer()
         {
             InitializeComponent();
-            GetProducts().GetAwaiter();
+            gridViewer.CellClick += GridViewerOnCellClick;
         }
 
-        private async Task GetProducts()
+        private void GridViewerOnCellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                var products = await ResponseManager.BuildWebJsonObject<List<ProductDto>>("https://localhost:44336/api/products/"
-                    ,RestMethods.Get, DecompressionMethods.GZip | DecompressionMethods.Deflate, Encoding.UTF8);
-                PopulateGrid(products);
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                throw;
-            }
+            var row = gridViewer.SelectedRows[0];
+
+            if (row.DataBoundItem is ProductDto product)
+                GridViewerOnRowSelected?.Invoke(sender, new ProductGridEventArgs
+                {
+                    Product = product
+                });
         }
 
-        public void PopulateGrid(IEnumerable<ProductDto> products)
+
+        public void RefreshGridViewerDataSource(List<ProductDto> products)
         {
             gridViewer.DataSource = products;
         }

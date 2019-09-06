@@ -47,7 +47,7 @@ namespace ProductsCatalog.HttpRequestManager.Extensions
 
             urlParameters.ToList().ForEach(p =>
             {
-                StringBuilder.Append(p.ToString())
+                StringBuilder.Append(p)
                     .Append(urlParameters.IndexOf(p) < urlParameters.Count - 1
                         ? "&"
                         : string.Empty);

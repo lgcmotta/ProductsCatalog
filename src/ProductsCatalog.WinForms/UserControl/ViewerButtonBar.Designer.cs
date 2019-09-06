@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.removeBtn = new System.Windows.Forms.Button();
             this.editBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
@@ -43,7 +43,7 @@
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.mainPanel.Controls.Add(this.button1, 1, 0);
+            this.mainPanel.Controls.Add(this.removeBtn, 1, 0);
             this.mainPanel.Controls.Add(this.editBtn, 2, 0);
             this.mainPanel.Controls.Add(this.refreshBtn, 3, 0);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -54,20 +54,20 @@
             this.mainPanel.Size = new System.Drawing.Size(556, 98);
             this.mainPanel.TabIndex = 0;
             // 
-            // button1
+            // removeBtn
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGray;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(66, 20);
-            this.button1.Margin = new System.Windows.Forms.Padding(20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 58);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Remove";
-            this.button1.UseVisualStyleBackColor = false;
+            this.removeBtn.BackColor = System.Drawing.Color.LightGray;
+            this.removeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.removeBtn.FlatAppearance.BorderSize = 0;
+            this.removeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
+            this.removeBtn.Location = new System.Drawing.Point(66, 20);
+            this.removeBtn.Margin = new System.Windows.Forms.Padding(20);
+            this.removeBtn.Name = "removeBtn";
+            this.removeBtn.Size = new System.Drawing.Size(107, 58);
+            this.removeBtn.TabIndex = 0;
+            this.removeBtn.Text = "Remove";
+            this.removeBtn.UseVisualStyleBackColor = false;
             // 
             // editBtn
             // 
@@ -114,7 +114,7 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel mainPanel;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button removeBtn;
         private System.Windows.Forms.Button editBtn;
         private System.Windows.Forms.Button refreshBtn;
     }

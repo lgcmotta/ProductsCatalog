@@ -87,5 +87,29 @@ namespace ProductsCatalog.WebAPI.Controllers
                 return BadRequest(exception);
             }
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+
+                if (product == null)
+                    return NotFound();
+
+                _context.Products.Remove(product);
+
+                await _context.SaveChangesAsync();
+
+                return NoContent();
+
+            }
+            catch (Exception exception)
+            {
+                return BadRequest(exception);
+            }
+        }
+
     }
 }
