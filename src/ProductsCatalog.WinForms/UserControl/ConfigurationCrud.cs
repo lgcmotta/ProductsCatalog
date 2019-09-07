@@ -9,46 +9,25 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductsCatalog.WinForms.DTO;
 using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.ViewModel;
 
 namespace ProductsCatalog.WinForms.UserControl
 {
     public partial class ConfigurationCrud : System.Windows.Forms.UserControl
     {
-        public delegate Task SaveConfigurationEventHandler(object sender, ConfigurationCrudEventArgs args);
+        public delegate Task ConfigurationFoundedEventHandler(object sender, ConfigurationLoadedEventArgs args);
 
-        public event SaveConfigurationEventHandler SaveConfigurationRequested;
+        public event ConfigurationFoundedEventHandler ConfigurationFounded;
+
+        private readonly ConfigurationViewModel _configurationViewModel;
 
         public ConfigurationCrud()
         {
             InitializeComponent();
-
+            _configurationViewModel = new ConfigurationViewModel();
+            _configurationViewModel.ConfigurationLoaded += ConfigurationLoaded;
+            _configurationViewModel.ConfigurationNotFounded += ConfigurationNotFounded;
             crudButtonBar.CrudButtonBarClicked += CrudButtonBarOnCrudButtonBarClicked;
-        }
-
-        private void CrudButtonBarOnCrudButtonBarClicked(object sender, CrudButtonBarEventArgs args)
-        {
-            switch (args.Action)
-            {
-                case CrudButtonBarEventArgs.ButtonAction.Save:
-
-                    if (!ValidateConfigurationValues())
-                        return;
-
-                    SaveConfigurationRequested?.Invoke(sender, new ConfigurationCrudEventArgs
-                    {
-                        Host = hostTextBox.Text,
-                        Port = (int)portUpDown.Value
-                    });
-
-                    break;
-                case CrudButtonBarEventArgs.ButtonAction.Cancel:
-
-                    SendToBack();
-
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
         }
 
         private bool ValidateConfigurationValues()
@@ -68,10 +47,58 @@ namespace ProductsCatalog.WinForms.UserControl
             return false;
         }
 
-        public void SetConfigurationInfo(ConfigurationDto configuration)
+        private void SetConfigurationInfo(ConfigurationDto configuration)
         {
             hostTextBox.Text = configuration.Host;
             portUpDown.Value = configuration.Port;
+        }
+
+        private void ConfigurationNotFounded(object sender, ConfigurationNotFoundedEventArgs args)
+        {
+            MessageBox.Show(args.Message, "Error", MessageBoxButtons.OK);
+            BringToFront();
+        }
+
+        private void ConfigurationLoaded(object sender, ConfigurationLoadedEventArgs args)
+        {
+            if (args.Configuration == null)
+                return;
+
+            SetConfigurationInfo(args.Configuration);
+
+            ConfigurationFounded?.Invoke(sender, args);
+        }
+
+        private async Task CrudButtonBarOnCrudButtonBarClicked(object sender, CrudButtonBarEventArgs args)
+        {
+            switch (args.Action)
+            {
+                case CrudButtonBarEventArgs.ButtonAction.Save:
+
+                    if (!ValidateConfigurationValues())
+                        return;
+
+                    var saved = await _configurationViewModel.SaveConfiguration(new ConfigurationDto
+                    {
+                        Host = hostTextBox.Text,
+                        Port = (int)portUpDown.Value
+                    });
+
+                    if (saved)
+                        _configurationViewModel.LoadConfiguration();
+
+                    break;
+                case CrudButtonBarEventArgs.ButtonAction.Cancel:
+                    SendToBack();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void LoadConfiguration()
+        {
+            _configurationViewModel.LoadConfiguration();
         }
     }
 }

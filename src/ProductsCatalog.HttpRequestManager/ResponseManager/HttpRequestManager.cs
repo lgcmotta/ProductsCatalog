@@ -2,7 +2,6 @@
 using System.IO;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,7 +11,7 @@ using ProductsCatalog.HttpRequestManager.Enumerations;
 
 namespace ProductsCatalog.HttpRequestManager.ResponseManager
 {
-    public class ResponseManager
+    public class RequestManager
     {
         public static async Task<T> GetRequestJsonObject<T>(string url, DecompressionMethods decompressionMethods, Encoding encoding) where T : class, new()
         {
@@ -52,7 +51,7 @@ namespace ProductsCatalog.HttpRequestManager.ResponseManager
         {
             using (var client = new HttpClient())
             {
-                var response = await client.DeleteAsync(url, CancellationToken.None));
+                var response = await client.DeleteAsync(url);
                 return response;
             }
         }

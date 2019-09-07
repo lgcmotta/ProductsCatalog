@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Application\" />
     <Folder Include="Core\Domain\" />
     <Folder Include="Infrastructure\Extensions\" />
   </ItemGroup>

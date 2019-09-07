@@ -25,7 +25,26 @@ namespace ProductsCatalog.WinForms.Containers
             
         }
 
-        private void CrudButtonBarOnCrudButtonBarClicked(object sender, CrudButtonBarEventArgs args)
+        private bool ValidateProductFields()
+        {
+            if (!string.IsNullOrEmpty(productCrud.NameText)
+                && !string.IsNullOrEmpty(productCrud.DescriptionText))
+                return true;
+
+            var sb = new StringBuilder();
+
+            if (string.IsNullOrEmpty(productCrud.NameText))
+                sb.AppendLine("- Product must have a name.");
+            if (string.IsNullOrEmpty(productCrud.DescriptionText))
+                sb.AppendLine("- Product must have a description");
+
+            MessageBox.Show(sb.ToString(), "Error", MessageBoxButtons.OK);
+
+            return false;
+
+        }
+
+        private async Task CrudButtonBarOnCrudButtonBarClicked(object sender, CrudButtonBarEventArgs args)
         {
             switch (args.Action)
             {
@@ -47,30 +66,12 @@ namespace ProductsCatalog.WinForms.Containers
 
                     break;
                 case CrudButtonBarEventArgs.ButtonAction.Cancel:
+                    ResetCrud();
                     SendToBack();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        private bool ValidateProductFields()
-        {
-            if (!string.IsNullOrEmpty(productCrud.NameText)
-                && !string.IsNullOrEmpty(productCrud.DescriptionText))
-                return true;
-
-            var sb = new StringBuilder();
-
-            if (string.IsNullOrEmpty(productCrud.NameText))
-                sb.AppendLine("- Product must have a name.");
-            if (string.IsNullOrEmpty(productCrud.DescriptionText))
-                sb.AppendLine("- Product must have a description");
-
-            MessageBox.Show(sb.ToString(), "Error", MessageBoxButtons.OK);
-
-            return false;
-
         }
 
         public void SetProductInfo(ProductDto product)

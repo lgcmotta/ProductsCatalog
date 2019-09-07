@@ -30,7 +30,6 @@
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.allProductsBtn = new System.Windows.Forms.Button();
-            this.newProductBtn = new System.Windows.Forms.Button();
             this.configBtn = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -39,9 +38,8 @@
             // 
             this.mainPanel.ColumnCount = 1;
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.mainPanel.Controls.Add(this.allProductsBtn, 0, 1);
-            this.mainPanel.Controls.Add(this.newProductBtn, 0, 0);
-            this.mainPanel.Controls.Add(this.configBtn, 0, 2);
+            this.mainPanel.Controls.Add(this.allProductsBtn, 0, 0);
+            this.mainPanel.Controls.Add(this.configBtn, 0, 1);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
@@ -56,30 +54,20 @@
             // allProductsBtn
             // 
             this.allProductsBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.allProductsBtn.Enabled = false;
             this.allProductsBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
-            this.allProductsBtn.Location = new System.Drawing.Point(3, 75);
+            this.allProductsBtn.Location = new System.Drawing.Point(3, 3);
             this.allProductsBtn.Name = "allProductsBtn";
             this.allProductsBtn.Size = new System.Drawing.Size(203, 66);
             this.allProductsBtn.TabIndex = 1;
             this.allProductsBtn.Text = "Products";
             this.allProductsBtn.UseVisualStyleBackColor = true;
             // 
-            // newProductBtn
-            // 
-            this.newProductBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newProductBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
-            this.newProductBtn.Location = new System.Drawing.Point(3, 3);
-            this.newProductBtn.Name = "newProductBtn";
-            this.newProductBtn.Size = new System.Drawing.Size(203, 66);
-            this.newProductBtn.TabIndex = 0;
-            this.newProductBtn.Text = "New Product";
-            this.newProductBtn.UseVisualStyleBackColor = true;
-            // 
             // configBtn
             // 
             this.configBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.configBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
-            this.configBtn.Location = new System.Drawing.Point(3, 147);
+            this.configBtn.Location = new System.Drawing.Point(3, 75);
             this.configBtn.Name = "configBtn";
             this.configBtn.Size = new System.Drawing.Size(203, 66);
             this.configBtn.TabIndex = 2;
@@ -102,7 +90,6 @@
 
         private System.Windows.Forms.TableLayoutPanel mainPanel;
         private System.Windows.Forms.Button allProductsBtn;
-        private System.Windows.Forms.Button newProductBtn;
         private System.Windows.Forms.Button configBtn;
     }
 }

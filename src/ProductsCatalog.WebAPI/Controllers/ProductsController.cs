@@ -88,7 +88,7 @@ namespace ProductsCatalog.WebAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete, Route("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             try

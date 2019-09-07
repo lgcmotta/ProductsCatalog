@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using ProductsCatalog.ConversionExtensions.Json.Serialize;
@@ -14,23 +15,15 @@ namespace ProductsCatalog.WinForms.ViewModel
 {
     public class ProductsViewModel
     {
-        public enum CrudOperations
-        {
-            None,
-            Add,
-            Update
-        }
+        private const string Products = "products";
 
         private string _requestBaseUrl;
+        private const string Delete = "delete";
 
         public ConfigurationDto Configuration { get; set; }
 
-        public List<ProductDto> Products { get; set; }
-
         public ProductDto SelectedProduct { get; set; }
-
-        public CrudOperations Operation { get; set; }
-
+        
         public ProductsViewModel()
         {
             _requestBaseUrl = string.Empty;
@@ -47,45 +40,45 @@ namespace ProductsCatalog.WinForms.ViewModel
             }
         }
 
-        public async Task<bool> AddNewProduct(ProductDto product)
+        public async Task<IEnumerable<ProductDto>> GetProductsList()
         {
-            _requestBaseUrl = GetBaseUrl().AppendPath("products", true);
+            _requestBaseUrl = GetBaseUrl().AppendPath(Products);
 
-            var productJsonString = product.ToJsonString();
-
-            var response = await ResponseManager.PostObjectToWebApi(_requestBaseUrl, productJsonString, Encoding.UTF8);
-
-            return response.StatusCode == HttpStatusCode.Created;
+            return await RequestManager.GetRequestJsonObject<List<ProductDto>>(_requestBaseUrl
+                , DecompressionMethods.Deflate | DecompressionMethods.GZip
+                , Encoding.UTF8);
         }
 
-        public async Task RefreshProducts()
+        public async Task<bool> AddOrUpdateProduct(ProductDto product)
         {
-            _requestBaseUrl = GetBaseUrl().AppendPath("products", true);
+            if (product.Id == 0)
+            {
+                _requestBaseUrl = GetBaseUrl()
+                    .AppendPath(Products,true);
 
-            Products = await ResponseManager.GetRequestJsonObject<List<ProductDto>>(_requestBaseUrl
-                    , DecompressionMethods.Deflate | DecompressionMethods.GZip, Encoding.UTF8);
+               var response = await RequestManager.PostObjectToWebApi(_requestBaseUrl, product.ToJsonString(), Encoding.UTF8);
+
+               return response.StatusCode == HttpStatusCode.Created;
+            }
+            else
+            {
+                _requestBaseUrl = GetBaseUrl()
+                    .AppendPath(Products)
+                    .AppendPath(product.Id.ToString(), true);
+
+                var response = await RequestManager.PutObjectToWebApi(_requestBaseUrl, product, Encoding.UTF8, "application/json");
+
+                return response.StatusCode == HttpStatusCode.NoContent;
+            }
         }
 
         public async Task<bool> RemoveProduct(ProductDto product)
         {
-            _requestBaseUrl = GetBaseUrl().AppendPath("products").AppendPath(product.Id.ToString(), true);
+            _requestBaseUrl = GetBaseUrl().AppendPath(Products).AppendPath(product.Id.ToString(),true);
 
-            var response = await ResponseManager.DeleteObjectFromWebApi(_requestBaseUrl);
-
-            return response.StatusCode == HttpStatusCode.NoContent;
-        }
-
-        public async Task<bool> EditProduct(ProductDto product)
-        {
-            _requestBaseUrl = GetBaseUrl().AppendPath("products").AppendPath(product.Id.ToString(), true);
-
-            var productJson = product.ToJsonString();
-
-            var response = await ResponseManager.PutObjectToWebApi(_requestBaseUrl, product, Encoding.UTF8, "application/json");
+            var response = await RequestManager.DeleteObjectFromWebApi(_requestBaseUrl);
 
             return response.StatusCode == HttpStatusCode.NoContent;
         }
-
-     
     }
 }

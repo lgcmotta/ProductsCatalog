@@ -10,7 +10,5 @@
 
         public ButtonAction Action { get; set; }
 
-
-
     }
 }

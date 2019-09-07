@@ -20,7 +20,6 @@ namespace ProductsCatalog.WinForms.UserControl
         public MainMenuBar()
         {
             InitializeComponent();
-            newProductBtn.Click += NewProductBtnOnClick;
             allProductsBtn.Click += AllProductsBtnOnClick;
             configBtn.Click += ConfigBtnOnClick;
         }
@@ -28,19 +27,18 @@ namespace ProductsCatalog.WinForms.UserControl
         private void ConfigBtnOnClick(object sender, System.EventArgs e)
         {
             MainMenuButtonClicked?.Invoke(sender
-                , new MainMenuEventArgs {ClickedButton = MainMenuEventArgs.OptionSelected.Configuration});
+                , new MainMenuEventArgs {SelectedOption = MainMenuEventArgs.Options.Configuration});
         }
 
         private void AllProductsBtnOnClick(object sender, System.EventArgs e)
         {
             MainMenuButtonClicked?.Invoke(sender
-                , new MainMenuEventArgs {ClickedButton = MainMenuEventArgs.OptionSelected.AllProducts});
+                , new MainMenuEventArgs {SelectedOption= MainMenuEventArgs.Options.Products});
         }
 
-        private void NewProductBtnOnClick(object sender, System.EventArgs e)
+        public void EnableProductsButton(bool value)
         {
-            MainMenuButtonClicked?.Invoke(sender
-                , new MainMenuEventArgs { ClickedButton = MainMenuEventArgs.OptionSelected.NewProduct });
+            allProductsBtn.Enabled = value;
         }
     }
     

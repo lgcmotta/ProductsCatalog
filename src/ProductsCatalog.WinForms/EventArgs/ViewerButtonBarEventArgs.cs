@@ -4,8 +4,9 @@
     {
         public enum Buttons
         {
-            Remove,
+            Add,
             Edit,
+            Remove,
             Refresh
         }
 

@@ -19,12 +19,18 @@ namespace ProductsCatalog.WinForms.UserControl
     {
         public delegate void ProductGridSelectedEventHandler(object sender, ProductGridEventArgs args);
 
-        public event ProductGridSelectedEventHandler GridViewerOnRowSelected;
+        public event ProductGridSelectedEventHandler GridViewerRowSelected;
 
         public ProductsGridViewer()
         {
             InitializeComponent();
             gridViewer.CellClick += GridViewerOnCellClick;
+            gridViewer.DataSourceChanged += GridViewerOnDataSourceChanged;
+        }
+
+        private void GridViewerOnDataSourceChanged(object sender, System.EventArgs e)
+        {
+            gridViewer.ClearSelection();
         }
 
         private void GridViewerOnCellClick(object sender, DataGridViewCellEventArgs e)
@@ -32,12 +38,11 @@ namespace ProductsCatalog.WinForms.UserControl
             var row = gridViewer.SelectedRows[0];
 
             if (row.DataBoundItem is ProductDto product)
-                GridViewerOnRowSelected?.Invoke(sender, new ProductGridEventArgs
+                GridViewerRowSelected?.Invoke(sender, new ProductGridEventArgs
                 {
                     Product = product
                 });
         }
-
 
         public void RefreshGridViewerDataSource(List<ProductDto> products)
         {

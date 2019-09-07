@@ -6,11 +6,12 @@ namespace ProductsCatalog.WinForms.EventArgs
     {
         public enum Buttons
         {
-            Remove,
+            Add,
             Edit,
-            Refresh
         }
 
         public Buttons Action { get; set; }
+
+        public ProductDto Product { get; set; }
     }
 }

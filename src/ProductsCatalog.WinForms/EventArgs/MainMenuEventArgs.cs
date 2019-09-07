@@ -2,14 +2,13 @@
 {
     public class MainMenuEventArgs : System.EventArgs
     {
-        public enum OptionSelected
+        public enum Options
         {
-            NewProduct,
-            AllProducts,
+            Products,
             Configuration
         }
 
-        public OptionSelected ClickedButton { get; set; }
+        public Options SelectedOption { get; set; }
 
     }
 }

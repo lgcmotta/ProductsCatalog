@@ -13,16 +13,25 @@ namespace ProductsCatalog.WinForms.UserControl
 {
     public partial class ViewerButtonBar : System.Windows.Forms.UserControl
     {
-        public delegate void ViewerButtonBarEventHandler(object sender, ViewerButtonBarEventArgs args);
+        public delegate Task ViewerButtonBarEventHandler(object sender, ViewerButtonBarEventArgs args);
 
         public event ViewerButtonBarEventHandler ViewerButtonClicked;
 
         public ViewerButtonBar()
         {
             InitializeComponent();
+            addBtn.Click += AddBtnOnClick;
             refreshBtn.Click += RefreshBtnOnClick;
             removeBtn.Click += RemoveBtnOnClick;
             editBtn.Click += EditBtnOnClick;
+        }
+
+        private void AddBtnOnClick(object sender, System.EventArgs e)
+        {
+            ViewerButtonClicked?.Invoke(sender, new ViewerButtonBarEventArgs
+            {
+                Action = ViewerButtonBarEventArgs.Buttons.Add
+            });
         }
 
         private void RefreshBtnOnClick(object sender, System.EventArgs e)
@@ -32,7 +41,6 @@ namespace ProductsCatalog.WinForms.UserControl
                 Action = ViewerButtonBarEventArgs.Buttons.Refresh
             });
         }
-
 
         private void RemoveBtnOnClick(object sender, System.EventArgs e)
         {

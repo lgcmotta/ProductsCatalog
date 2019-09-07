@@ -13,7 +13,7 @@ namespace ProductsCatalog.WinForms.UserControl
 {
     public partial class CrudButtonBar : System.Windows.Forms.UserControl
     {
-        public delegate void CrudButtonBarClickEventHandler(object sender, CrudButtonBarEventArgs args);
+        public delegate Task CrudButtonBarClickEventHandler(object sender, CrudButtonBarEventArgs args);
 
         public event CrudButtonBarClickEventHandler CrudButtonBarClicked;
 

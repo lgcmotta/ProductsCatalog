@@ -110,7 +110,8 @@
     </Compile>
     <Compile Include="DTO\ConfigurationDto.cs" />
     <Compile Include="DTO\ProductDto.cs" />
-    <Compile Include="EventArgs\ConfigurationCrudEventArgs.cs" />
+    <Compile Include="EventArgs\ConfigurationLoadedEventArgs.cs" />
+    <Compile Include="EventArgs\ConfigurationNotFoundedEventArgs.cs" />
     <Compile Include="EventArgs\CrudButtonBarEventArgs.cs" />
     <Compile Include="EventArgs\CrudContainerEventArgs.cs" />
     <Compile Include="EventArgs\MainMenuEventArgs.cs" />

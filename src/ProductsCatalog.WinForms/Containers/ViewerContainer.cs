@@ -9,49 +9,104 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductsCatalog.WinForms.DTO;
 using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.ViewModel;
 
 namespace ProductsCatalog.WinForms.Containers
 {
     public partial class ViewerContainer : System.Windows.Forms.UserControl
     {
-        public delegate Task ViewerContainerActionRequestEventHandler(object sender, ViewerContainerActionEventArgs args);
-        
-        public event ViewerContainerActionRequestEventHandler ViewerContainerActionRequested;
+        public delegate void ViewerContainerActionEventHandler(object sender, ViewerContainerActionEventArgs args);
 
-        public delegate void ViewerContainerItemSelectedEventHandler(object sender, ProductGridEventArgs args);
+        public event ViewerContainerActionEventHandler ViewerContainerActionRequested;
 
-        public event ViewerContainerItemSelectedEventHandler ViewerContainerOnRowSelected;
+        private readonly ProductsViewModel _productsViewModel;
 
         public ViewerContainer()
         {
             InitializeComponent();
-            viewerButtonBar.ViewerButtonClicked += ViewerButtonBarOnViewerButtonClicked;
-            productsGridViewer.GridViewerOnRowSelected += ProductsGridViewerOnRowSelect;
+
+            _productsViewModel = new ProductsViewModel();
+
+            viewerButtonBar.ViewerButtonClicked += ViewerButtonBarOnButtonClicked;
+            productsGridViewer.GridViewerRowSelected += GridViewerOnRowSelected;
         }
 
-        private void ProductsGridViewerOnRowSelect(object sender, ProductGridEventArgs args)
+        private void GridViewerOnRowSelected(object sender, ProductGridEventArgs args)
         {
-            ViewerContainerOnRowSelected?.Invoke(sender, args);
+            _productsViewModel.SelectedProduct = args.Product;
         }
 
-        private void ViewerButtonBarOnViewerButtonClicked(object sender, ViewerButtonBarEventArgs args)
+        private async Task ViewerButtonBarOnButtonClicked(object sender, ViewerButtonBarEventArgs args)
         {
-            var action = (int)args.Action;
-
-            ViewerContainerActionRequested?.Invoke(sender, new ViewerContainerActionEventArgs()
+            switch (args.Action)
             {
-                Action = (ViewerContainerActionEventArgs.Buttons)action
-            });
+                case ViewerButtonBarEventArgs.Buttons.Add:
+                case ViewerButtonBarEventArgs.Buttons.Edit:
+
+                    var action = (int)args.Action;
+
+                    _productsViewModel.SelectedProduct = args.Action == ViewerButtonBarEventArgs.Buttons.Add
+                        ? null
+                        : _productsViewModel.SelectedProduct;
+
+                    ViewerContainerActionRequested?.Invoke(sender, new ViewerContainerActionEventArgs
+                    {
+                        Action = (ViewerContainerActionEventArgs.Buttons)action,
+                        Product = _productsViewModel.SelectedProduct
+                    });
+
+                    break;
+                case ViewerButtonBarEventArgs.Buttons.Remove:
+                    if (_productsViewModel.SelectedProduct == null)
+                    {
+                        MessageBox.Show($"Please select a product to {args.Action.ToString().ToLower()}"
+                            , "Error"
+                            , MessageBoxButtons.OK);
+                        break;
+                    }
+
+                    var removed = await _productsViewModel.RemoveProduct(_productsViewModel.SelectedProduct);
+
+                    MessageBox.Show(removed
+                            ? $"{_productsViewModel.SelectedProduct.Name} was removed."
+                            : $"{_productsViewModel.SelectedProduct.Name} could not be removed. See log for more information"
+                            , removed
+                                ? "Success"
+                                : "Error", MessageBoxButtons.OK);
+
+                    if (!removed)
+                        break;
+                    _productsViewModel.SelectedProduct = null;
+                    await LoadProductsList();
+                    break;
+                case ViewerButtonBarEventArgs.Buttons.Refresh:
+                    await LoadProductsList();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
-        public void ResetFileFormatsCheckBoxes()
+        public async Task<bool> AddOrUpdateProduct(ProductDto product)
         {
-            exportButtonBar.ResetFileFormatCheckBoxes();
+            if (_productsViewModel.SelectedProduct != null)
+                product.Id = _productsViewModel.SelectedProduct.Id;
+
+            var completed = await _productsViewModel.AddOrUpdateProduct(product);
+
+            return completed;
         }
-        
-        public void RefreshGridViewer(List<ProductDto> products)
+
+        public void SetConfiguration(ConfigurationDto configuration)
         {
-            productsGridViewer.RefreshGridViewerDataSource(products);
+            _productsViewModel.Configuration = configuration;
+        }
+
+        public async Task LoadProductsList()
+        {
+            var products = await _productsViewModel.GetProductsList();
+
+            productsGridViewer.RefreshGridViewerDataSource(products.ToList());
         }
     }
 }
