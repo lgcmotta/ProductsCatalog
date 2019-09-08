@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProductsCatalog.ConversionExtensions.Json.Serialize;
+using ProductsCatalog.ConversionExtensions.Xml.Serialize;
 using ProductsCatalog.WinForms.DTO;
-using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.DTO.EventArgs;
 using ProductsCatalog.WinForms.ViewModel;
 
-namespace ProductsCatalog.WinForms.Containers
+namespace ProductsCatalog.WinForms.Components
 {
     public partial class ViewerContainer : System.Windows.Forms.UserControl
     {
@@ -29,6 +27,74 @@ namespace ProductsCatalog.WinForms.Containers
 
             viewerButtonBar.ViewerButtonClicked += ViewerButtonBarOnButtonClicked;
             productsGridViewer.GridViewerRowSelected += GridViewerOnRowSelected;
+            exportButtonBar.ExportButtonClick += ExportButtonOnClick;
+        }
+
+        private async Task ExportToFile(ExporButtonEventArgs.Formats fileFormat)
+        {
+            var products = await _productsViewModel.GetProductsList();
+
+            if (!products.Any())
+                return;
+
+            var exported = false;
+
+            switch (fileFormat)
+            {
+                case ExporButtonEventArgs.Formats.Json:
+                    var jsonProducts = await products.ToJsonStringAsync();
+                    exported = await OpenSaveFileDialog(jsonProducts,fileFormat);
+                    break;
+                case ExporButtonEventArgs.Formats.Xml:
+                    var xmlProducts = await products.ToList().ToXmlStringAsync();
+                    exported = await OpenSaveFileDialog(xmlProducts, fileFormat);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(fileFormat), fileFormat, null);
+            }
+
+            if(exported)
+                MessageBox.Show($"File successfully exported!","Success", MessageBoxButtons.OK);
+        }
+
+        private async Task<bool> OpenSaveFileDialog(string fileContent, ExporButtonEventArgs.Formats fileFormats)
+        {
+            using (var saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                saveFileDialog.Filter = fileFormats == ExporButtonEventArgs.Formats.Json
+                    ? "(*.json)|*.json"
+                    : "(*.xml)|*.xml";
+                saveFileDialog.FilterIndex = 1;
+                saveFileDialog.RestoreDirectory = true;
+                if (saveFileDialog.ShowDialog() != DialogResult.OK)
+                    return false;
+
+                if (string.IsNullOrEmpty(saveFileDialog.FileName))
+                {
+                    MessageBox.Show("File name cannot be empty", "Error", MessageBoxButtons.OK);
+                    return false;
+                }
+
+                var saved = await _productsViewModel.SaveFile(saveFileDialog.FileName,fileContent);
+                return saved;
+            }
+        }
+
+        private async Task ExportButtonOnClick(object sender, ExporButtonEventArgs args)
+        {
+            try
+            {
+                await ExportToFile(args.FileFormat);
+
+                exportButtonBar.ResetFileFormatCheckBoxes();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("An unexpected error has occurred.\nPlease see log for more information", "Error"
+                    , MessageBoxButtons.OK);
+                // todo log exception
+            }
         }
 
         private void GridViewerOnRowSelected(object sender, ProductGridEventArgs args)

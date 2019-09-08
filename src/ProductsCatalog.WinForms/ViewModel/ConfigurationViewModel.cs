@@ -7,7 +7,7 @@ using Newtonsoft.Json.Serialization;
 using ProductsCatalog.ConversionExtensions.Json.Deserialize;
 using ProductsCatalog.ConversionExtensions.Json.Serialize;
 using ProductsCatalog.WinForms.DTO;
-using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.DTO.EventArgs;
 
 namespace ProductsCatalog.WinForms.ViewModel
 {

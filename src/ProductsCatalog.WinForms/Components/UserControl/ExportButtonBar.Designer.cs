@@ -1,4 +1,4 @@
-﻿namespace ProductsCatalog.WinForms.UserControl
+﻿namespace ProductsCatalog.WinForms.Components.UserControl
 {
     partial class ExportButtonBar
     {
@@ -31,9 +31,9 @@
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
             this.formatsBox = new System.Windows.Forms.GroupBox();
             this.fileFormatsPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.jsonButton = new System.Windows.Forms.RadioButton();
             this.xmlButton = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.jsonButton = new System.Windows.Forms.RadioButton();
+            this.exportBtn = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.formatsBox.SuspendLayout();
             this.fileFormatsPanel.SuspendLayout();
@@ -45,7 +45,7 @@
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.64286F));
             this.mainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.35714F));
             this.mainPanel.Controls.Add(this.formatsBox, 0, 0);
-            this.mainPanel.Controls.Add(this.button1, 1, 0);
+            this.mainPanel.Controls.Add(this.exportBtn, 1, 0);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
@@ -61,7 +61,7 @@
             this.formatsBox.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.formatsBox.Location = new System.Drawing.Point(3, 3);
             this.formatsBox.Name = "formatsBox";
-            this.formatsBox.Size = new System.Drawing.Size(218, 78);
+            this.formatsBox.Size = new System.Drawing.Size(219, 78);
             this.formatsBox.TabIndex = 0;
             this.formatsBox.TabStop = false;
             this.formatsBox.Text = "File Formats";
@@ -78,8 +78,21 @@
             this.fileFormatsPanel.Name = "fileFormatsPanel";
             this.fileFormatsPanel.RowCount = 1;
             this.fileFormatsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.fileFormatsPanel.Size = new System.Drawing.Size(212, 47);
+            this.fileFormatsPanel.Size = new System.Drawing.Size(213, 47);
             this.fileFormatsPanel.TabIndex = 0;
+            // 
+            // xmlButton
+            // 
+            this.xmlButton.AutoSize = true;
+            this.xmlButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.xmlButton.Location = new System.Drawing.Point(109, 3);
+            this.xmlButton.Name = "xmlButton";
+            this.xmlButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.xmlButton.Size = new System.Drawing.Size(101, 41);
+            this.xmlButton.TabIndex = 1;
+            this.xmlButton.TabStop = true;
+            this.xmlButton.Text = "XML";
+            this.xmlButton.UseVisualStyleBackColor = true;
             // 
             // jsonButton
             // 
@@ -94,33 +107,20 @@
             this.jsonButton.Text = "JSON";
             this.jsonButton.UseVisualStyleBackColor = true;
             // 
-            // xmlButton
+            // exportBtn
             // 
-            this.xmlButton.AutoSize = true;
-            this.xmlButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xmlButton.Location = new System.Drawing.Point(109, 3);
-            this.xmlButton.Name = "xmlButton";
-            this.xmlButton.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.xmlButton.Size = new System.Drawing.Size(100, 41);
-            this.xmlButton.TabIndex = 1;
-            this.xmlButton.TabStop = true;
-            this.xmlButton.Text = "XML";
-            this.xmlButton.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.LightGray;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Bold);
-            this.button1.Location = new System.Drawing.Point(254, 20);
-            this.button1.Margin = new System.Windows.Forms.Padding(30, 20, 30, 20);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 44);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Export";
-            this.button1.UseVisualStyleBackColor = false;
+            this.exportBtn.BackColor = System.Drawing.Color.LightGray;
+            this.exportBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exportBtn.FlatAppearance.BorderSize = 0;
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exportBtn.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Bold);
+            this.exportBtn.Location = new System.Drawing.Point(255, 20);
+            this.exportBtn.Margin = new System.Windows.Forms.Padding(30, 20, 30, 20);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(219, 44);
+            this.exportBtn.TabIndex = 1;
+            this.exportBtn.Text = "Export";
+            this.exportBtn.UseVisualStyleBackColor = false;
             // 
             // ExportButtonBar
             // 
@@ -144,6 +144,6 @@
         private System.Windows.Forms.TableLayoutPanel fileFormatsPanel;
         private System.Windows.Forms.RadioButton xmlButton;
         private System.Windows.Forms.RadioButton jsonButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button exportBtn;
     }
 }

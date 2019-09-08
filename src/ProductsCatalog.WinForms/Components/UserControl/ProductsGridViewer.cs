@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
-using ProductsCatalog.HttpRequestManager.Enumerations;
-using ProductsCatalog.HttpRequestManager.ResponseManager;
 using ProductsCatalog.WinForms.DTO;
-using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.DTO.EventArgs;
 
-namespace ProductsCatalog.WinForms.UserControl
+namespace ProductsCatalog.WinForms.Components.UserControl
 {
     public partial class ProductsGridViewer : System.Windows.Forms.UserControl
     {

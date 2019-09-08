@@ -1,4 +1,4 @@
-﻿namespace ProductsCatalog.WinForms.EventArgs
+﻿namespace ProductsCatalog.WinForms.DTO.EventArgs
 {
     public class CrudButtonBarEventArgs : System.EventArgs
     {

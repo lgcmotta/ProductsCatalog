@@ -1,4 +1,6 @@
-﻿namespace ProductsCatalog.WinForms.Containers
+﻿using ProductsCatalog.WinForms.Components.UserControl;
+
+namespace ProductsCatalog.WinForms.Components
 {
     partial class CrudContainer
     {
@@ -29,8 +31,8 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.productCrud = new ProductsCatalog.WinForms.UserControl.ProductCrud();
-            this.crudButtonBar = new ProductsCatalog.WinForms.UserControl.CrudButtonBar();
+            this.productCrud = new ProductCrud();
+            this.crudButtonBar = new CrudButtonBar();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 

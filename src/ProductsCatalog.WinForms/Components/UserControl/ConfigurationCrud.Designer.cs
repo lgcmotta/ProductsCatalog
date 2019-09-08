@@ -1,4 +1,4 @@
-﻿namespace ProductsCatalog.WinForms.UserControl
+﻿namespace ProductsCatalog.WinForms.Components.UserControl
 {
     partial class ConfigurationCrud
     {
@@ -34,7 +34,7 @@
             this.hostLabel = new System.Windows.Forms.Label();
             this.portLabel = new System.Windows.Forms.Label();
             this.portUpDown = new System.Windows.Forms.NumericUpDown();
-            this.crudButtonBar = new ProductsCatalog.WinForms.UserControl.CrudButtonBar();
+            this.crudButtonBar = new CrudButtonBar();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portUpDown)).BeginInit();
             this.SuspendLayout();

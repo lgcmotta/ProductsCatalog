@@ -96,28 +96,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Containers\CrudContainer.cs">
+    <Compile Include="Components\CrudContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Containers\CrudContainer.Designer.cs">
+    <Compile Include="Components\CrudContainer.Designer.cs">
       <DependentUpon>CrudContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Containers\ViewerContainer.cs">
+    <Compile Include="Components\ViewerContainer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Containers\ViewerContainer.Designer.cs">
+    <Compile Include="Components\ViewerContainer.Designer.cs">
       <DependentUpon>ViewerContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\ConfigurationDto.cs" />
+    <Compile Include="DTO\EventArgs\ExporButtonEventArgs.cs" />
     <Compile Include="DTO\ProductDto.cs" />
-    <Compile Include="EventArgs\ConfigurationLoadedEventArgs.cs" />
-    <Compile Include="EventArgs\ConfigurationNotFoundedEventArgs.cs" />
-    <Compile Include="EventArgs\CrudButtonBarEventArgs.cs" />
-    <Compile Include="EventArgs\CrudContainerEventArgs.cs" />
-    <Compile Include="EventArgs\MainMenuEventArgs.cs" />
-    <Compile Include="EventArgs\ProductGridEventArgs.cs" />
-    <Compile Include="EventArgs\ViewerButtonBarEventArgs.cs" />
-    <Compile Include="EventArgs\ViewerContainerActionEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\ConfigurationLoadedEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\ConfigurationNotFoundedEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\CrudButtonBarEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\CrudContainerEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\MainMenuEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\ProductGridEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\ViewerButtonBarEventArgs.cs" />
+    <Compile Include="DTO\EventArgs\ViewerContainerActionEventArgs.cs" />
     <Compile Include="ProductsCatalogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,54 +127,54 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControl\ConfigurationCrud.cs">
+    <Compile Include="Components\UserControl\ConfigurationCrud.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ConfigurationCrud.Designer.cs">
+    <Compile Include="Components\UserControl\ConfigurationCrud.Designer.cs">
       <DependentUpon>ConfigurationCrud.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\CrudButtonBar.cs">
+    <Compile Include="Components\UserControl\CrudButtonBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\CrudButtonBar.Designer.cs">
+    <Compile Include="Components\UserControl\CrudButtonBar.Designer.cs">
       <DependentUpon>CrudButtonBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ExportButtonBar.cs">
+    <Compile Include="Components\UserControl\ExportButtonBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ExportButtonBar.Designer.cs">
+    <Compile Include="Components\UserControl\ExportButtonBar.Designer.cs">
       <DependentUpon>ExportButtonBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\MainMenuBar.cs">
+    <Compile Include="Components\UserControl\MainMenuBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\MainMenuBar.Designer.cs">
+    <Compile Include="Components\UserControl\MainMenuBar.Designer.cs">
       <DependentUpon>MainMenuBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ProductCrud.cs">
+    <Compile Include="Components\UserControl\ProductCrud.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ProductCrud.Designer.cs">
+    <Compile Include="Components\UserControl\ProductCrud.Designer.cs">
       <DependentUpon>ProductCrud.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ProductsGridViewer.cs">
+    <Compile Include="Components\UserControl\ProductsGridViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ProductsGridViewer.Designer.cs">
+    <Compile Include="Components\UserControl\ProductsGridViewer.Designer.cs">
       <DependentUpon>ProductsGridViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControl\ViewerButtonBar.cs">
+    <Compile Include="Components\UserControl\ViewerButtonBar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControl\ViewerButtonBar.Designer.cs">
+    <Compile Include="Components\UserControl\ViewerButtonBar.Designer.cs">
       <DependentUpon>ViewerButtonBar.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ConfigurationViewModel.cs" />
     <Compile Include="ViewModel\ProductsViewModel.cs" />
-    <EmbeddedResource Include="Containers\CrudContainer.resx">
+    <EmbeddedResource Include="Components\CrudContainer.resx">
       <DependentUpon>CrudContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Containers\ViewerContainer.resx">
+    <EmbeddedResource Include="Components\ViewerContainer.resx">
       <DependentUpon>ViewerContainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductsCatalogForm.resx">
@@ -188,25 +189,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserControl\ConfigurationCrud.resx">
+    <EmbeddedResource Include="Components\UserControl\ConfigurationCrud.resx">
       <DependentUpon>ConfigurationCrud.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\CrudButtonBar.resx">
+    <EmbeddedResource Include="Components\UserControl\CrudButtonBar.resx">
       <DependentUpon>CrudButtonBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ExportButtonBar.resx">
+    <EmbeddedResource Include="Components\UserControl\ExportButtonBar.resx">
       <DependentUpon>ExportButtonBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\MainMenuBar.resx">
+    <EmbeddedResource Include="Components\UserControl\MainMenuBar.resx">
       <DependentUpon>MainMenuBar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ProductCrud.resx">
+    <EmbeddedResource Include="Components\UserControl\ProductCrud.resx">
       <DependentUpon>ProductCrud.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ProductsGridViewer.resx">
+    <EmbeddedResource Include="Components\UserControl\ProductsGridViewer.resx">
       <DependentUpon>ProductsGridViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControl\ViewerButtonBar.resx">
+    <EmbeddedResource Include="Components\UserControl\ViewerButtonBar.resx">
       <DependentUpon>ViewerButtonBar.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

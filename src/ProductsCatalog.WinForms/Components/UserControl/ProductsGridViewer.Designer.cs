@@ -1,4 +1,4 @@
-﻿namespace ProductsCatalog.WinForms.UserControl
+﻿namespace ProductsCatalog.WinForms.Components.UserControl
 {
     partial class ProductsGridViewer
     {

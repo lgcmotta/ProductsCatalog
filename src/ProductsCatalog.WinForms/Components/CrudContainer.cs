@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductsCatalog.WinForms.DTO;
-using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.DTO.EventArgs;
 
-namespace ProductsCatalog.WinForms.Containers
+namespace ProductsCatalog.WinForms.Components
 {
     public partial class CrudContainer : System.Windows.Forms.UserControl
     {

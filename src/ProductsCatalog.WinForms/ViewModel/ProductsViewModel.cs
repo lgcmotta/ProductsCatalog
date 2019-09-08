@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -10,15 +11,16 @@ using ProductsCatalog.HttpRequestManager.Enumerations;
 using ProductsCatalog.HttpRequestManager.Extensions;
 using ProductsCatalog.HttpRequestManager.ResponseManager;
 using ProductsCatalog.WinForms.DTO;
+using File = System.IO.File;
 
 namespace ProductsCatalog.WinForms.ViewModel
 {
     public class ProductsViewModel
     {
         private const string Products = "products";
+        private const string Api = "api";
 
         private string _requestBaseUrl;
-        private const string Delete = "delete";
 
         public ConfigurationDto Configuration { get; set; }
 
@@ -35,7 +37,7 @@ namespace ProductsCatalog.WinForms.ViewModel
                 string.Concat(Configuration.Host, ":", Configuration.Port)))
             {
                 return requestBuilder.BuildBaseUrl(RequestProtocol.Https)
-                    .AppendPath("api")
+                    .AppendPath(Api)
                     .Build();
             }
         }
@@ -56,9 +58,8 @@ namespace ProductsCatalog.WinForms.ViewModel
                 _requestBaseUrl = GetBaseUrl()
                     .AppendPath(Products,true);
 
-               var response = await RequestManager.PostObjectToWebApi(_requestBaseUrl, product.ToJsonString(), Encoding.UTF8);
-
-               return response.StatusCode == HttpStatusCode.Created;
+                using (var response = await RequestManager.PostObjectToWebApi(_requestBaseUrl, product.ToJsonString(), Encoding.UTF8))
+                    return response.StatusCode == HttpStatusCode.Created;
             }
             else
             {
@@ -66,9 +67,8 @@ namespace ProductsCatalog.WinForms.ViewModel
                     .AppendPath(Products)
                     .AppendPath(product.Id.ToString(), true);
 
-                var response = await RequestManager.PutObjectToWebApi(_requestBaseUrl, product, Encoding.UTF8, "application/json");
-
-                return response.StatusCode == HttpStatusCode.NoContent;
+                using (var response = await RequestManager.PutObjectToWebApi(_requestBaseUrl, product, Encoding.UTF8, "application/json"))
+                    return response.StatusCode == HttpStatusCode.NoContent;
             }
         }
 
@@ -76,9 +76,21 @@ namespace ProductsCatalog.WinForms.ViewModel
         {
             _requestBaseUrl = GetBaseUrl().AppendPath(Products).AppendPath(product.Id.ToString(),true);
 
-            var response = await RequestManager.DeleteObjectFromWebApi(_requestBaseUrl);
+            using (var response = await RequestManager.DeleteObjectFromWebApi(_requestBaseUrl))
+                return response.StatusCode == HttpStatusCode.NoContent;
+        }
 
-            return response.StatusCode == HttpStatusCode.NoContent;
+        public async Task<bool> SaveFile(string fileName, string fileContent)
+        {
+            if(File.Exists(fileName))
+                File.Delete(fileName);
+            using (var fs = new FileStream(fileName, FileMode.Create, FileAccess.Write))
+            using (var sw = new StreamWriter(fs))
+            {
+                await sw.WriteAsync(fileContent);
+            }
+
+            return File.Exists(fileName);
         }
     }
 }

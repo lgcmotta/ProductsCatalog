@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.DTO.EventArgs;
 
 namespace ProductsCatalog.WinForms
 {

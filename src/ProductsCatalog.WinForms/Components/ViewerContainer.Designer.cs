@@ -1,4 +1,6 @@
-﻿namespace ProductsCatalog.WinForms.Containers
+﻿using ProductsCatalog.WinForms.Components.UserControl;
+
+namespace ProductsCatalog.WinForms.Components
 {
     partial class ViewerContainer
     {
@@ -29,9 +31,9 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.viewerButtonBar = new ProductsCatalog.WinForms.UserControl.ViewerButtonBar();
-            this.productsGridViewer = new ProductsCatalog.WinForms.UserControl.ProductsGridViewer();
-            this.exportButtonBar = new ProductsCatalog.WinForms.UserControl.ExportButtonBar();
+            this.viewerButtonBar = new ViewerButtonBar();
+            this.productsGridViewer = new ProductsGridViewer();
+            this.exportButtonBar = new ExportButtonBar();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 

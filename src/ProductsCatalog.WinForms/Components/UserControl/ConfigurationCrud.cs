@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductsCatalog.WinForms.DTO;
-using ProductsCatalog.WinForms.EventArgs;
+using ProductsCatalog.WinForms.DTO.EventArgs;
 using ProductsCatalog.WinForms.ViewModel;
 
-namespace ProductsCatalog.WinForms.UserControl
+namespace ProductsCatalog.WinForms.Components.UserControl
 {
     public partial class ConfigurationCrud : System.Windows.Forms.UserControl
     {

@@ -1,6 +1,4 @@
-﻿using ProductsCatalog.WinForms.DTO;
-
-namespace ProductsCatalog.WinForms.EventArgs
+﻿namespace ProductsCatalog.WinForms.DTO.EventArgs
 {
     public class CrudContainerEventArgs : System.EventArgs
     {

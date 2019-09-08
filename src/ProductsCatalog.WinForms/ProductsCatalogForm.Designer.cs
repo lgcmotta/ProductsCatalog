@@ -1,4 +1,7 @@
-﻿namespace ProductsCatalog.WinForms
+﻿using ProductsCatalog.WinForms.Components;
+using ProductsCatalog.WinForms.Components.UserControl;
+
+namespace ProductsCatalog.WinForms
 {
     partial class ProductsCatalogForm
     {
@@ -29,11 +32,11 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.mainMenuBar = new ProductsCatalog.WinForms.UserControl.MainMenuBar();
+            this.mainMenuBar = new MainMenuBar();
             this.containerPanel = new System.Windows.Forms.Panel();
-            this.crudContainer = new ProductsCatalog.WinForms.Containers.CrudContainer();
-            this.viewerContainer = new ProductsCatalog.WinForms.Containers.ViewerContainer();
-            this.configurationCrud = new ProductsCatalog.WinForms.UserControl.ConfigurationCrud();
+            this.crudContainer = new CrudContainer();
+            this.viewerContainer = new ViewerContainer();
+            this.configurationCrud = new ConfigurationCrud();
             this.mainPanel.SuspendLayout();
             this.containerPanel.SuspendLayout();
             this.SuspendLayout();
@@ -115,11 +118,11 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel mainPanel;
-        private UserControl.MainMenuBar mainMenuBar;
+        private MainMenuBar mainMenuBar;
         private System.Windows.Forms.Panel containerPanel;
-        private Containers.ViewerContainer viewerContainer;
-        private UserControl.ConfigurationCrud configurationCrud;
-        private Containers.CrudContainer crudContainer;
+        private ViewerContainer viewerContainer;
+        private ConfigurationCrud configurationCrud;
+        private CrudContainer crudContainer;
     }
 }
 
