@@ -14,15 +14,16 @@ I've attached to this solution, an windows forms application to manage crud oper
 
 ## How To Run
 1. Install Docker for Desktop (use linux containers)
-2. Build the Soluton
-3. Open PowerShell as Administrator
-4. Go to Solution Folder
+2. Install .NET Core 3.0 preview 6 SDK
+3. Build the Soluton
+4. Open PowerShell as Administrator
+5. Go to Solution Folder
 ```powershell
 cd C:\Users\MyUser\source\repos\ProductsCatalog\
 ```
-5. Run the following command
+6. Run the following command
 ```powershell
 docker-compose up
 ```
-6. Set the Windows Forms Application as Startup Project
-7. Run the Application
+7. Set the Windows Forms Application as Startup Project
+8. Run the Application
