@@ -8,6 +8,7 @@ using ProductsCatalog.ConversionExtensions.Xml.Serialize;
 using ProductsCatalog.WinForms.DTO;
 using ProductsCatalog.WinForms.DTO.EventArgs;
 using ProductsCatalog.WinForms.ViewModel;
+using ProductsCatalog.WinForms.ViewModel.Interfaces;
 
 namespace ProductsCatalog.WinForms.Components
 {
@@ -17,14 +18,14 @@ namespace ProductsCatalog.WinForms.Components
 
         public event ViewerContainerActionEventHandler ViewerContainerActionRequested;
 
-        private readonly ProductsViewModel _productsViewModel;
+        private readonly IProductsViewModel _productsViewModel;
+        private readonly ILogger<ViewerContainer> _logger;
 
-        public ViewerContainer()
+        public ViewerContainer(IProductsViewModel productsViewModel, ILogger<ViewerContainer> logger)
         {
             InitializeComponent();
-
-            _productsViewModel = new ProductsViewModel();
-
+            _productsViewModel = productsViewModel;
+            _logger = logger;
             viewerButtonBar.ViewerButtonClicked += ViewerButtonBarOnButtonClicked;
             productsGridViewer.GridViewerRowSelected += GridViewerOnRowSelected;
             exportButtonBar.ExportButtonClick += ExportButtonOnClick;
@@ -54,7 +55,12 @@ namespace ProductsCatalog.WinForms.Components
             }
 
             if(exported)
-                MessageBox.Show($"File successfully exported!","Success", MessageBoxButtons.OK);
+            {
+                MessageBox.Show($"File successfully exported!", "Success", MessageBoxButtons.OK);
+
+                await _logger.LogInformation(
+                    $"Successfully exported {fileFormat} file at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+            }
         }
 
         private async Task<bool> OpenSaveFileDialog(string fileContent, ExporButtonEventArgs.Formats fileFormats)
@@ -93,7 +99,8 @@ namespace ProductsCatalog.WinForms.Components
             {
                 MessageBox.Show("An unexpected error has occurred.\nPlease see log for more information", "Error"
                     , MessageBoxButtons.OK);
-                // todo log exception
+
+                await _logger.LogException(exception);
             }
         }
 
@@ -142,6 +149,7 @@ namespace ProductsCatalog.WinForms.Components
 
                     if (!removed)
                         break;
+
                     _productsViewModel.SelectedProduct = null;
                     await LoadProductsList();
                     break;

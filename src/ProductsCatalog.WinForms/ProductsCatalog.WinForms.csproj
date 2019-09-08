@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -109,7 +112,10 @@
       <DependentUpon>ViewerContainer.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\ConfigurationDto.cs" />
+    <Compile Include="DTO\Enums\Enums.cs" />
     <Compile Include="DTO\EventArgs\ExporButtonEventArgs.cs" />
+    <Compile Include="DTO\Logging\ExceptionLog.cs" />
+    <Compile Include="DTO\Logging\MessageLog.cs" />
     <Compile Include="DTO\ProductDto.cs" />
     <Compile Include="DTO\EventArgs\ConfigurationLoadedEventArgs.cs" />
     <Compile Include="DTO\EventArgs\ConfigurationNotFoundedEventArgs.cs" />
@@ -169,8 +175,12 @@
     <Compile Include="Components\UserControl\ViewerButtonBar.Designer.cs">
       <DependentUpon>ViewerButtonBar.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ConfigurationViewModel.cs" />
-    <Compile Include="ViewModel\ProductsViewModel.cs" />
+    <Compile Include="ViewModel\Implementations\ConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\Implementations\Logger.cs" />
+    <Compile Include="ViewModel\Interfaces\IConfigurationViewModel.cs" />
+    <Compile Include="ViewModel\Interfaces\ILogger.cs" />
+    <Compile Include="ViewModel\Interfaces\IProductsViewModel.cs" />
+    <Compile Include="ViewModel\Implementations\ProductsViewModel.cs" />
     <EmbeddedResource Include="Components\CrudContainer.resx">
       <DependentUpon>CrudContainer.cs</DependentUpon>
     </EmbeddedResource>

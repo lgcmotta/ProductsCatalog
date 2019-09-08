@@ -1,5 +1,7 @@
-﻿using ProductsCatalog.WinForms.Components;
+﻿using Autofac;
+using ProductsCatalog.WinForms.Components;
 using ProductsCatalog.WinForms.Components.UserControl;
+using ProductsCatalog.WinForms.ViewModel.Interfaces;
 
 namespace ProductsCatalog.WinForms
 {
@@ -32,11 +34,13 @@ namespace ProductsCatalog.WinForms
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.mainMenuBar = new MainMenuBar();
+            this.mainMenuBar = new ProductsCatalog.WinForms.Components.UserControl.MainMenuBar();
             this.containerPanel = new System.Windows.Forms.Panel();
-            this.crudContainer = new CrudContainer();
-            this.viewerContainer = new ViewerContainer();
-            this.configurationCrud = new ConfigurationCrud();
+            this.configurationCrud = new ProductsCatalog.WinForms.Components.UserControl.ConfigurationCrud(_container.Resolve<IConfigurationViewModel>()
+            ,_container.Resolve<ILogger<ConfigurationCrud>>());
+            this.crudContainer = new ProductsCatalog.WinForms.Components.CrudContainer();
+            this.viewerContainer = new ProductsCatalog.WinForms.Components.ViewerContainer(_container.Resolve<IProductsViewModel>()
+            ,_container.Resolve<ILogger<ViewerContainer>>());
             this.mainPanel.SuspendLayout();
             this.containerPanel.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +79,14 @@ namespace ProductsCatalog.WinForms
             this.containerPanel.Size = new System.Drawing.Size(827, 515);
             this.containerPanel.TabIndex = 1;
             // 
+            // configurationCrud
+            // 
+            this.configurationCrud.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.configurationCrud.Location = new System.Drawing.Point(0, 0);
+            this.configurationCrud.Name = "configurationCrud";
+            this.configurationCrud.Size = new System.Drawing.Size(827, 515);
+            this.configurationCrud.TabIndex = 2;
+            // 
             // crudContainer
             // 
             this.crudContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -90,14 +102,6 @@ namespace ProductsCatalog.WinForms
             this.viewerContainer.Name = "viewerContainer";
             this.viewerContainer.Size = new System.Drawing.Size(827, 515);
             this.viewerContainer.TabIndex = 0;
-            // 
-            // configurationCrud
-            // 
-            this.configurationCrud.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.configurationCrud.Location = new System.Drawing.Point(0, 0);
-            this.configurationCrud.Name = "configurationCrud";
-            this.configurationCrud.Size = new System.Drawing.Size(827, 515);
-            this.configurationCrud.TabIndex = 2;
             // 
             // ProductsCatalogForm
             // 

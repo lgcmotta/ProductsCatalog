@@ -1,33 +1,31 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using ProductsCatalog.ConversionExtensions.Json.Deserialize;
 using ProductsCatalog.ConversionExtensions.Json.Serialize;
 using ProductsCatalog.WinForms.DTO;
+using ProductsCatalog.WinForms.DTO.Enums;
 using ProductsCatalog.WinForms.DTO.EventArgs;
+using ProductsCatalog.WinForms.ViewModel.Interfaces;
 
-namespace ProductsCatalog.WinForms.ViewModel
+namespace ProductsCatalog.WinForms.ViewModel.Implementations
 {
-    public class ConfigurationViewModel
+    public class ConfigurationViewModel : IConfigurationViewModel
     {
-        public delegate void ConfigurationLoadedEventHandler(object sender, ConfigurationLoadedEventArgs args);
+        private readonly ILogger<ConfigurationViewModel> _logger;
 
-        public delegate void ConfigurationNotFoundedEventHandler(object sender, ConfigurationNotFoundedEventArgs args);
-        
         public event ConfigurationLoadedEventHandler ConfigurationLoaded;
 
         public event ConfigurationNotFoundedEventHandler ConfigurationNotFounded;
 
         private string _configurationPath;
 
-        public ConfigurationViewModel()
+        public ConfigurationViewModel(ILogger<ConfigurationViewModel> logger)
         {
+            _logger = logger;
             _configurationPath = string.Concat(AppDomain.CurrentDomain.BaseDirectory, "config.json");
         }
-
+        
         public async Task<bool> SaveConfiguration(ConfigurationDto configuration)
         {
             if(File.Exists(_configurationPath))
@@ -40,7 +38,14 @@ namespace ProductsCatalog.WinForms.ViewModel
                 using (var sw = new StreamWriter(fs))
                 {
                     await sw.WriteAsync(jsonConfig);
-                    return File.Exists(_configurationPath);
+                    var exists = File.Exists(_configurationPath);
+                    if (exists)
+                        await _logger.LogInformation(
+                            $"Configuration file created at {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                    else
+                        await _logger.LogError("Configuration file could not be created", LogCriticality.High);
+
+                    return exists;
                 }
             }
         }
@@ -83,6 +88,9 @@ namespace ProductsCatalog.WinForms.ViewModel
                 Message = "Configuration not founded.\nPlease fill the configuration form."
             });
 
+            _logger.LogError($"Configuration file not founded at {DateTime.Now:yyyy-MM-dd HH:mm:ss}."
+                , LogCriticality.High);
+
             return true;
         }
 
@@ -94,8 +102,10 @@ namespace ProductsCatalog.WinForms.ViewModel
             {
                 Message = "Application failed to read the existent configuration file.\nPlease fill the configuration form."
             });
-        }
 
+            _logger.LogError(
+                $"Application failed to read existent configuration file at {DateTime.Now:yyyy-MM-dd HH:mm:ss}", LogCriticality.High);
+        }
         
     }
 }

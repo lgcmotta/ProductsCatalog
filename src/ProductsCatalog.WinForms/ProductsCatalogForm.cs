@@ -1,22 +1,58 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Autofac;
 using ProductsCatalog.WinForms.DTO.EventArgs;
+using ProductsCatalog.WinForms.ViewModel;
+using ProductsCatalog.WinForms.ViewModel.Implementations;
+using ProductsCatalog.WinForms.ViewModel.Interfaces;
 
 namespace ProductsCatalog.WinForms
 {
     public partial class ProductsCatalogForm : Form
     {
+        private IContainer _container;
+        private readonly ILogger<ProductsCatalogForm> _logger;
+
         public ProductsCatalogForm()
         {
+            BuildDependencyInjectionContainer();
+
             InitializeComponent();
+
+            _logger = _container.Resolve<ILogger<ProductsCatalogForm>>();
+
             configurationCrud.ConfigurationFounded += ConfigurationFounded;
+
             mainMenuBar.MainMenuButtonClicked += MainMenuOnButtonClicked;
+
             viewerContainer.ViewerContainerActionRequested += ViewerContainerOnActionRequested;
+
             crudContainer.CrudContainerSaveRequested += CrudContainerOnSaveRequested;
+
             configurationCrud.LoadConfiguration();
+            
         }
 
+        private void BuildDependencyInjectionContainer()
+        {
+            var builder = new ContainerBuilder();
+
+            builder.RegisterGeneric(typeof(Logger<>))
+                .As(typeof(ILogger<>))
+                .SingleInstance();
+
+            builder.RegisterType<ProductsViewModel>()
+                    .As<IProductsViewModel>()
+                    .InstancePerDependency();
+
+            builder.RegisterType<ConfigurationViewModel>()
+                .As<IConfigurationViewModel>()
+                .InstancePerDependency();
+
+            _container = builder.Build();
+        }
+        
         private async Task CrudContainerOnSaveRequested(object sender, CrudContainerEventArgs args)
         {
             var completed = await viewerContainer.AddOrUpdateProduct(args.Product);
@@ -67,5 +103,6 @@ namespace ProductsCatalog.WinForms
             viewerContainer.SetConfiguration(args.Configuration);
             await viewerContainer.LoadProductsList();
         }
+
     }
 }

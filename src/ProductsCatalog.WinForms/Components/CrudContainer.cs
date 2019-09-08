@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProductsCatalog.WinForms.DTO;
 using ProductsCatalog.WinForms.DTO.EventArgs;
+using ProductsCatalog.WinForms.ViewModel.Interfaces;
 
 namespace ProductsCatalog.WinForms.Components
 {
@@ -17,7 +18,6 @@ namespace ProductsCatalog.WinForms.Components
         {
             InitializeComponent();
             crudButtonBar.CrudButtonBarClicked += CrudButtonBarOnCrudButtonBarClicked;
-            
         }
 
         private bool ValidateProductFields()

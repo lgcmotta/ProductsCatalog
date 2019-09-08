@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ProductsCatalog.WinForms.DTO;
 using ProductsCatalog.WinForms.DTO.EventArgs;
 using ProductsCatalog.WinForms.ViewModel;
+using ProductsCatalog.WinForms.ViewModel.Interfaces;
 
 namespace ProductsCatalog.WinForms.Components.UserControl
 {
@@ -14,12 +15,14 @@ namespace ProductsCatalog.WinForms.Components.UserControl
 
         public event ConfigurationFoundedEventHandler ConfigurationFounded;
 
-        private readonly ConfigurationViewModel _configurationViewModel;
+        private readonly IConfigurationViewModel _configurationViewModel;
+        private readonly ILogger<ConfigurationCrud> _logger;
 
-        public ConfigurationCrud()
+        public ConfigurationCrud(IConfigurationViewModel configurationViewModel, ILogger<ConfigurationCrud> logger)
         {
             InitializeComponent();
-            _configurationViewModel = new ConfigurationViewModel();
+            _configurationViewModel = configurationViewModel;
+            _logger = logger;
             _configurationViewModel.ConfigurationLoaded += ConfigurationLoaded;
             _configurationViewModel.ConfigurationNotFounded += ConfigurationNotFounded;
             crudButtonBar.CrudButtonBarClicked += CrudButtonBarOnCrudButtonBarClicked;
@@ -29,6 +32,7 @@ namespace ProductsCatalog.WinForms.Components.UserControl
         {
             if (!string.IsNullOrEmpty(hostTextBox.Text) && (int) portUpDown.Value > 0)
                 return true;
+
             var sb = new StringBuilder();
 
             if (string.IsNullOrEmpty(hostTextBox.Text))
