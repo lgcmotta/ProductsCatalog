@@ -53,31 +53,40 @@
             // 
             // allProductsBtn
             // 
+            this.allProductsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
             this.allProductsBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.allProductsBtn.Enabled = false;
+            this.allProductsBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
+            this.allProductsBtn.FlatAppearance.BorderSize = 0;
             this.allProductsBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
+            this.allProductsBtn.ForeColor = System.Drawing.Color.White;
             this.allProductsBtn.Location = new System.Drawing.Point(3, 3);
             this.allProductsBtn.Name = "allProductsBtn";
             this.allProductsBtn.Size = new System.Drawing.Size(203, 66);
             this.allProductsBtn.TabIndex = 1;
             this.allProductsBtn.Text = "Products";
-            this.allProductsBtn.UseVisualStyleBackColor = true;
+            this.allProductsBtn.UseVisualStyleBackColor = false;
             // 
             // configBtn
             // 
+            this.configBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
             this.configBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.configBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
+            this.configBtn.FlatAppearance.BorderSize = 0;
             this.configBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
+            this.configBtn.ForeColor = System.Drawing.Color.White;
             this.configBtn.Location = new System.Drawing.Point(3, 75);
             this.configBtn.Name = "configBtn";
             this.configBtn.Size = new System.Drawing.Size(203, 66);
             this.configBtn.TabIndex = 2;
             this.configBtn.Text = "Configuration";
-            this.configBtn.UseVisualStyleBackColor = true;
+            this.configBtn.UseVisualStyleBackColor = false;
             // 
             // MainMenuBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "MainMenuBar";
             this.Size = new System.Drawing.Size(209, 484);

@@ -39,7 +39,7 @@
             // 
             this.gridViewer.AllowUserToAddRows = false;
             this.gridViewer.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LightGray;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(215)))), ((int)(((byte)(245)))));
             this.gridViewer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridViewer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gridViewer.BackgroundColor = System.Drawing.Color.White;

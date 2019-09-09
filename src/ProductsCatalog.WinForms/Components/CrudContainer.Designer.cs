@@ -31,8 +31,8 @@ namespace ProductsCatalog.WinForms.Components
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.productCrud = new ProductCrud();
-            this.crudButtonBar = new CrudButtonBar();
+            this.productCrud = new ProductsCatalog.WinForms.Components.UserControl.ProductCrud();
+            this.crudButtonBar = new ProductsCatalog.WinForms.Components.UserControl.CrudButtonBar();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +53,7 @@ namespace ProductsCatalog.WinForms.Components
             // 
             // productCrud
             // 
+            this.productCrud.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(215)))), ((int)(((byte)(245)))));
             this.productCrud.Dock = System.Windows.Forms.DockStyle.Fill;
             this.productCrud.Location = new System.Drawing.Point(3, 3);
             this.productCrud.Name = "productCrud";
@@ -61,7 +62,7 @@ namespace ProductsCatalog.WinForms.Components
             // 
             // crudButtonBar
             // 
-            this.crudButtonBar.BackColor = System.Drawing.Color.White;
+            this.crudButtonBar.BackColor = System.Drawing.Color.Transparent;
             this.crudButtonBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crudButtonBar.Location = new System.Drawing.Point(3, 437);
             this.crudButtonBar.Name = "crudButtonBar";
@@ -72,6 +73,7 @@ namespace ProductsCatalog.WinForms.Components
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "CrudContainer";
             this.Size = new System.Drawing.Size(446, 511);

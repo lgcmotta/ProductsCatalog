@@ -109,11 +109,12 @@
             // 
             // exportBtn
             // 
-            this.exportBtn.BackColor = System.Drawing.Color.LightGray;
+            this.exportBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
             this.exportBtn.Dock = System.Windows.Forms.DockStyle.Fill;
             this.exportBtn.FlatAppearance.BorderSize = 0;
             this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exportBtn.Font = new System.Drawing.Font("Segoe UI Light", 18F, System.Drawing.FontStyle.Bold);
+            this.exportBtn.ForeColor = System.Drawing.Color.White;
             this.exportBtn.Location = new System.Drawing.Point(255, 20);
             this.exportBtn.Margin = new System.Windows.Forms.Padding(30, 20, 30, 20);
             this.exportBtn.Name = "exportBtn";
@@ -126,6 +127,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "ExportButtonBar";
             this.Size = new System.Drawing.Size(504, 84);

@@ -27,7 +27,6 @@ namespace ProductsCatalog.WinForms.Components.UserControl
             _configurationViewModel.ConfigurationNotFounded += ConfigurationNotFounded;
             crudButtonBar.CrudButtonBarClicked += CrudButtonBarOnCrudButtonBarClicked;
         }
-
         private bool ValidateConfigurationValues()
         {
             if (!string.IsNullOrEmpty(hostTextBox.Text) && (int) portUpDown.Value > 0)

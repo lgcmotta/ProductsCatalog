@@ -32,9 +32,9 @@
             this.headerLabel = new System.Windows.Forms.Label();
             this.hostTextBox = new System.Windows.Forms.TextBox();
             this.hostLabel = new System.Windows.Forms.Label();
+            this.crudButtonBar = new ProductsCatalog.WinForms.Components.UserControl.CrudButtonBar();
             this.portLabel = new System.Windows.Forms.Label();
             this.portUpDown = new System.Windows.Forms.NumericUpDown();
-            this.crudButtonBar = new CrudButtonBar();
             this.mainPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.portUpDown)).BeginInit();
             this.SuspendLayout();
@@ -100,6 +100,16 @@
             this.hostLabel.Text = "Hostname:";
             this.hostLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // crudButtonBar
+            // 
+            this.crudButtonBar.BackColor = System.Drawing.Color.Transparent;
+            this.mainPanel.SetColumnSpan(this.crudButtonBar, 2);
+            this.crudButtonBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crudButtonBar.Location = new System.Drawing.Point(3, 323);
+            this.crudButtonBar.Name = "crudButtonBar";
+            this.crudButtonBar.Size = new System.Drawing.Size(437, 74);
+            this.crudButtonBar.TabIndex = 13;
+            // 
             // portLabel
             // 
             this.portLabel.AutoSize = true;
@@ -130,20 +140,11 @@
             this.portUpDown.Size = new System.Drawing.Size(136, 39);
             this.portUpDown.TabIndex = 12;
             // 
-            // crudButtonBar
-            // 
-            this.crudButtonBar.BackColor = System.Drawing.Color.White;
-            this.mainPanel.SetColumnSpan(this.crudButtonBar, 2);
-            this.crudButtonBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crudButtonBar.Location = new System.Drawing.Point(3, 323);
-            this.crudButtonBar.Name = "crudButtonBar";
-            this.crudButtonBar.Size = new System.Drawing.Size(437, 74);
-            this.crudButtonBar.TabIndex = 13;
-            // 
             // ConfigurationCrud
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "ConfigurationCrud";
             this.Size = new System.Drawing.Size(443, 400);

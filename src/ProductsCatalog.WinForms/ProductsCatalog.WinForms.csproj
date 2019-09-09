@@ -198,6 +198,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Components\UserControl\ConfigurationCrud.resx">
       <DependentUpon>ConfigurationCrud.cs</DependentUpon>
@@ -248,6 +249,8 @@
       <Name>ProductsCatalog.HttpRequestManager</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ProductsCatalogsNoBg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

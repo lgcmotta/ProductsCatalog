@@ -184,6 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(237)))));
             this.Controls.Add(this.mainPanel);
             this.Name = "ProductCrud";
             this.Size = new System.Drawing.Size(329, 429);

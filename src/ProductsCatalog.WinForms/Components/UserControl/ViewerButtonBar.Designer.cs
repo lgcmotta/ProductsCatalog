@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.removeBtn = new System.Windows.Forms.Button();
-            this.editBtn = new System.Windows.Forms.Button();
             this.refreshBtn = new System.Windows.Forms.Button();
+            this.editBtn = new System.Windows.Forms.Button();
+            this.removeBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -57,43 +57,15 @@
             this.mainPanel.Size = new System.Drawing.Size(796, 84);
             this.mainPanel.TabIndex = 0;
             // 
-            // removeBtn
-            // 
-            this.removeBtn.BackColor = System.Drawing.Color.LightGray;
-            this.removeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.removeBtn.FlatAppearance.BorderSize = 0;
-            this.removeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.removeBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
-            this.removeBtn.Location = new System.Drawing.Point(219, 20);
-            this.removeBtn.Margin = new System.Windows.Forms.Padding(20);
-            this.removeBtn.Name = "removeBtn";
-            this.removeBtn.Size = new System.Drawing.Size(159, 44);
-            this.removeBtn.TabIndex = 0;
-            this.removeBtn.Text = "Remove";
-            this.removeBtn.UseVisualStyleBackColor = false;
-            // 
-            // editBtn
-            // 
-            this.editBtn.BackColor = System.Drawing.Color.LightGray;
-            this.editBtn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editBtn.FlatAppearance.BorderSize = 0;
-            this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
-            this.editBtn.Location = new System.Drawing.Point(418, 20);
-            this.editBtn.Margin = new System.Windows.Forms.Padding(20);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(159, 44);
-            this.editBtn.TabIndex = 1;
-            this.editBtn.Text = "Edit";
-            this.editBtn.UseVisualStyleBackColor = false;
-            // 
             // refreshBtn
             // 
-            this.refreshBtn.BackColor = System.Drawing.Color.LightGray;
+            this.refreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
             this.refreshBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.refreshBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
             this.refreshBtn.FlatAppearance.BorderSize = 0;
             this.refreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.refreshBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
+            this.refreshBtn.ForeColor = System.Drawing.Color.White;
             this.refreshBtn.Location = new System.Drawing.Point(617, 20);
             this.refreshBtn.Margin = new System.Windows.Forms.Padding(20);
             this.refreshBtn.Name = "refreshBtn";
@@ -102,13 +74,49 @@
             this.refreshBtn.Text = "Refresh";
             this.refreshBtn.UseVisualStyleBackColor = false;
             // 
+            // editBtn
+            // 
+            this.editBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
+            this.editBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.editBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
+            this.editBtn.FlatAppearance.BorderSize = 0;
+            this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
+            this.editBtn.ForeColor = System.Drawing.Color.White;
+            this.editBtn.Location = new System.Drawing.Point(418, 20);
+            this.editBtn.Margin = new System.Windows.Forms.Padding(20);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(159, 44);
+            this.editBtn.TabIndex = 1;
+            this.editBtn.Text = "Edit";
+            this.editBtn.UseVisualStyleBackColor = false;
+            // 
+            // removeBtn
+            // 
+            this.removeBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
+            this.removeBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.removeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
+            this.removeBtn.FlatAppearance.BorderSize = 0;
+            this.removeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.removeBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
+            this.removeBtn.ForeColor = System.Drawing.Color.White;
+            this.removeBtn.Location = new System.Drawing.Point(219, 20);
+            this.removeBtn.Margin = new System.Windows.Forms.Padding(20);
+            this.removeBtn.Name = "removeBtn";
+            this.removeBtn.Size = new System.Drawing.Size(159, 44);
+            this.removeBtn.TabIndex = 0;
+            this.removeBtn.Text = "Remove";
+            this.removeBtn.UseVisualStyleBackColor = false;
+            // 
             // addBtn
             // 
-            this.addBtn.BackColor = System.Drawing.Color.LightGray;
+            this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
             this.addBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
             this.addBtn.FlatAppearance.BorderSize = 0;
             this.addBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addBtn.Font = new System.Drawing.Font("Segoe UI Light", 14F, System.Drawing.FontStyle.Bold);
+            this.addBtn.ForeColor = System.Drawing.Color.White;
             this.addBtn.Location = new System.Drawing.Point(20, 20);
             this.addBtn.Margin = new System.Windows.Forms.Padding(20);
             this.addBtn.Name = "addBtn";
@@ -121,6 +129,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "ViewerButtonBar";
             this.Size = new System.Drawing.Size(796, 84);

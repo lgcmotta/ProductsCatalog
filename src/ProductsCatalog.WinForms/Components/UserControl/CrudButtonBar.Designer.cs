@@ -53,11 +53,13 @@
             // 
             // cancelBtn
             // 
-            this.cancelBtn.BackColor = System.Drawing.Color.LightGray;
+            this.cancelBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
             this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cancelBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
             this.cancelBtn.FlatAppearance.BorderSize = 0;
             this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
+            this.cancelBtn.ForeColor = System.Drawing.Color.White;
             this.cancelBtn.Location = new System.Drawing.Point(60, 15);
             this.cancelBtn.Margin = new System.Windows.Forms.Padding(5, 15, 10, 15);
             this.cancelBtn.Name = "cancelBtn";
@@ -68,11 +70,13 @@
             // 
             // saveBtn
             // 
-            this.saveBtn.BackColor = System.Drawing.Color.LightGray;
+            this.saveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(108)))), ((int)(((byte)(160)))));
             this.saveBtn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.saveBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(62)))), ((int)(((byte)(92)))));
             this.saveBtn.FlatAppearance.BorderSize = 0;
             this.saveBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.saveBtn.Font = new System.Drawing.Font("Segoe UI Light", 16F, System.Drawing.FontStyle.Bold);
+            this.saveBtn.ForeColor = System.Drawing.Color.White;
             this.saveBtn.Location = new System.Drawing.Point(288, 15);
             this.saveBtn.Margin = new System.Windows.Forms.Padding(10, 15, 5, 15);
             this.saveBtn.Name = "saveBtn";
@@ -85,7 +89,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "CrudButtonBar";
             this.Size = new System.Drawing.Size(559, 81);

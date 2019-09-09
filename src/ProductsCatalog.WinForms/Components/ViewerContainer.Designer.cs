@@ -31,9 +31,9 @@ namespace ProductsCatalog.WinForms.Components
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.viewerButtonBar = new ViewerButtonBar();
-            this.productsGridViewer = new ProductsGridViewer();
-            this.exportButtonBar = new ExportButtonBar();
+            this.viewerButtonBar = new ProductsCatalog.WinForms.Components.UserControl.ViewerButtonBar();
+            this.productsGridViewer = new ProductsCatalog.WinForms.Components.UserControl.ProductsGridViewer();
+            this.exportButtonBar = new ProductsCatalog.WinForms.Components.UserControl.ExportButtonBar();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,7 @@ namespace ProductsCatalog.WinForms.Components
             // 
             // viewerButtonBar
             // 
+            this.viewerButtonBar.BackColor = System.Drawing.Color.Transparent;
             this.viewerButtonBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.viewerButtonBar.Location = new System.Drawing.Point(3, 428);
             this.viewerButtonBar.Name = "viewerButtonBar";
@@ -73,6 +74,7 @@ namespace ProductsCatalog.WinForms.Components
             // 
             // exportButtonBar
             // 
+            this.exportButtonBar.BackColor = System.Drawing.Color.Transparent;
             this.exportButtonBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.exportButtonBar.Location = new System.Drawing.Point(3, 3);
             this.exportButtonBar.Name = "exportButtonBar";
@@ -83,6 +85,7 @@ namespace ProductsCatalog.WinForms.Components
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.mainPanel);
             this.Name = "ViewerContainer";
             this.Size = new System.Drawing.Size(780, 526);
